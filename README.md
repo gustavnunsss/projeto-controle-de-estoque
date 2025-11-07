@@ -1,2 +1,2 @@
 # projeto-controle-de-estoque
-JavaScript, Nodejs e Postgre
+JavaScript, Nodejs e PostgreSQL
