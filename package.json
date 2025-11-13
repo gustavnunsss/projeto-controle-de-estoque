@@ -1,0 +1,31 @@
+{
+  "name": "projeto-controle-de-estoque",
+  "version": "1.0.0",
+  "description": "JavaScript, Nodejs e PostgreSQL",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavnunsss/projeto-controle-de-estoque.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/gustavnunsss/projeto-controle-de-estoque/issues"
+  },
+  "homepage": "https://github.com/gustavnunsss/projeto-controle-de-estoque#readme",
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "nodemon": "^3.1.10",
+    "prisma": "^6.19.0",
+    "supertest": "^7.1.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.0",
+    "cors": "^2.8.5"
+  }
+}
