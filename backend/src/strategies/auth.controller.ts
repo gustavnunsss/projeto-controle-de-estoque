@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import {
   Body,
@@ -17,8 +18,8 @@ import { AuthGuard } from 'src/auth/guard/auth.guard';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  @Post('login')
   @HttpCode(HttpStatus.OK)
-  @Post('Login')
   login(@Body() input: { username: string; password: string }) {
     return this.authService.authenticate(input);
   }
@@ -26,7 +27,6 @@ export class AuthController {
   @UseGuards(AuthGuard)
   @Get('me')
   getUserInfo(@Request() request) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return request.users;
   }
 }

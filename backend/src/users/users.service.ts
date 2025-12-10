@@ -1,29 +1,25 @@
+/* eslint-disable @typescript-eslint/require-await */
 import { Injectable } from '@nestjs/common';
 
 export type User = {
-    userId: number;
-    usersName: string;
-    password: string; 
-}
-
-const users: User[] = [
-    {
-        userId: 1,
-        usersName: 'Gustavo',
-        password: '1234@5',
-    },
-    {
-        userId: 2,
-        usersName: 'Louis',
-        password: '123@4',
-    },
-
-];
+  userId: number;
+  username: string;
+  password: string;
+};
 
 @Injectable()
 export class UsersService {
-    async findUserByName(usersname: string): Promise<User | undefined> {
-        return users.find((users) => users.usersName === usersname);
-    }
+  private users: User[] = [
+    {
+      userId: 1,
+      username: 'louis',
+      password: '1234',
+    },
+  ];
+
+  async findUserByName(username: string): Promise<User | null> {
+    const user = this.users.find((user) => user.username === username);
+
+    return user ?? null;
+  }
 }
-   

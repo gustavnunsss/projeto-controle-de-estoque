@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import {
   Body,
   Controller,
@@ -11,7 +12,7 @@ import {
 
 import { AuthService } from './auth.service';
 import { PassportLocalGuard } from 'src/auth/guard/passport-local.guard';
-import { Req } from '@nestjs/common';
+import { Request } from '@nestjs/common';
 
 @Controller('auth')
 export class PassportController {
@@ -20,7 +21,7 @@ export class PassportController {
   @HttpCode(HttpStatus.OK)
   @Post('Login')
   @UseGuards(PassportLocalGuard)
-  login(@Req() request: Request & { user: any }) {
+  login(@Request() request: Request & { user: any }) {
     return this.authService.signIn(request.user);
   }
 
