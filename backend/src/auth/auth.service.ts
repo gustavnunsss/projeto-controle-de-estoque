@@ -1,5 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { SignUpDTO } from 'src/auth/dto/signup.dto';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { UsersService } from 'src/users/users.service';
 
 export type AuthInput = {
@@ -23,6 +25,7 @@ export class AuthService {
   constructor(
     private usersService: UsersService,
     private jwtService: JwtService,
+    private prisma: PrismaService,
   ) {}
 
   async authenticate(input: AuthInput): Promise<AuthResult> {
@@ -61,5 +64,18 @@ export class AuthService {
       userId: user.userId,
       username: user.username,
     };
+  }
+
+  async signUp(data: SignUpDTO) {
+    const userAlreadyExists = await this.prisma.user.findUnique({
+      where: {
+        email: data.email,
+      },
+    });
+
+    if (userAlreadyExists) throw new UnauthorizedException();
+    const user = await this.prisma.user.create({ data });
+
+    return user;
   }
 }
