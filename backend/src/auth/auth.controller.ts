@@ -1,32 +1,35 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import {
   Body,
   Controller,
-  HttpCode,
-  HttpStatus,
-  Post,
   Get,
-  UseGuards,
+  Post,
   Request,
+  UseGuards,
 } from '@nestjs/common';
-
+import { SignInDTO } from './dtos/signin.dto';
+import { SignupDTO } from './dtos/signup.dto';
 import { AuthService } from './auth.service';
-import { AuthGuard } from 'src/auth/guard/auth.guard';
+import { AuthGuard } from './guard/auth.guard';
 
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  @Post('login')
-  @HttpCode(HttpStatus.OK)
-  login(@Body() input: { username: string; password: string }) {
-    return this.authService.authenticate(input);
+  @Post('signup')
+  async signup(@Body() body: SignupDTO) {
+    await this.authService.signup(body);
+    return body;
+  }
+
+  @Post('signin')
+  async signin(@Body() body: SignInDTO) {
+    return this.authService.signin(body);
   }
 
   @UseGuards(AuthGuard)
   @Get('me')
-  getUserInfo(@Request() request) {
-    return request.users;
+  me(@Request() request) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
+    return request.user;
   }
 }

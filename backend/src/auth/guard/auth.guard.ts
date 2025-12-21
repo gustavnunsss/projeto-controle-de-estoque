@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
+import { jwtConstants } from '../dtos/constantes';
 
 interface JwtPayload {
   sub: number;
@@ -35,7 +36,12 @@ export class AuthGuard implements CanActivate {
 
     try {
       // Valida token
-      const tokenPayload = await this.jwtService.verifyAsync<JwtPayload>(token);
+      const tokenPayload = await this.jwtService.verifyAsync<JwtPayload>(
+        token,
+        {
+          secret: jwtConstants.secret,
+        },
+      );
 
       // Injeta usuário na request
       request.user = {
