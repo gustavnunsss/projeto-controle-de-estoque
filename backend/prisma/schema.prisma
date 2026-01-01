@@ -15,12 +15,52 @@ model User {
   password String 
 }
 
-model Products {
-  id            Int     @id @default(autoincrement())
+model Product {
+  id            String   @id @default(uuid())
   name          String
-  price         Float
-  rating        Float?
   stockQuantity Int
+  price     Float
+  rating    Float
+  createdAt     DateTime @default(now())
+
+  saleItems SaleItem[]
 }
+
+model Sale {
+  id        String   @id @default(uuid())
+  customer  String
+  createdAt DateTime @default(now())
+
+  items      SaleItem[]
+  receivable AccountReceivable?
+}
+
+model AccountReceivable { id       String        @id @default(uuid())
+  saleId  String        @unique
+  amount  Float
+  dueDate DateTime
+  paidAt  DateTime?
+  status  PaymentStatus
+
+  sale Sale @relation(fields: [saleId], references: [id])
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  LATE
+}
+
+model SaleItem {
+  id        String @id @default(uuid())
+  saleId   String
+  productId String
+  quantity Int
+  unitPrice Float
+
+  sale    Sale    @relation(fields: [saleId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
+}
+
 
 
