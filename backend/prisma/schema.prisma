@@ -20,7 +20,7 @@ model Product {
   name          String
   stockQuantity Int
   price     Float
-  rating    Float
+  rating    Float?
   createdAt     DateTime @default(now())
 
   saleItems SaleItem[]
