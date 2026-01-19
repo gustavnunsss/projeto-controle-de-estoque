@@ -35,7 +35,8 @@ model Sale {
   receivable AccountReceivable?
 }
 
-model AccountReceivable { id       String        @id @default(uuid())
+model AccountReceivable { 
+  id       String        @id @default(uuid())
   saleId  String        @unique
   amount  Float
   dueDate DateTime
