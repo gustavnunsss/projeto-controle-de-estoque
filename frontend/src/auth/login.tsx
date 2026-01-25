@@ -44,7 +44,7 @@ export default function Login() {
         </form>
 
         <p className="text-xs text-center text-gray-500 mt-6">
-          Don’t have an account?{" "}
+          Don’t have an account?
           <span className="text-black font-medium cursor-pointer">
             Register here
           </span>

@@ -84,7 +84,7 @@ export default function Register() {
           </div>
 
           <p className="text-xs text-center text-gray-500 mt-6">
-            Already have an account?{" "}
+            Already have an account?
             <span className="text-black font-medium cursor-pointer">
               Log in here
             </span>

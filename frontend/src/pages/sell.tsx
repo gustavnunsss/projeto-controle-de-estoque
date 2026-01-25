@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Sidebar } from "@/components/sidebar";
 
 export default function Sell() {
   const [quantity, setQuantity] = useState(2);
@@ -20,26 +21,7 @@ export default function Sell() {
 
   return (
     <div className="flex min-h-screen bg-zinc-950 text-white">
-      {/* Sidebar - Mesmo estilo do seu Inventory */}
-      <aside className="w-64 bg-zinc-900 p-6 hidden md:block border-r border-zinc-800">
-        <h1 className="text-xl font-bold mb-8">LOGO</h1>
-        <nav className="space-y-2">
-          <p className="text-xs text-zinc-500 mb-4">MENU</p>
-          <div className="px-4 py-2 rounded-lg text-zinc-400 hover:bg-zinc-800 cursor-pointer">
-            Dashboard
-          </div>
-          <div className="px-4 py-2 rounded-lg text-zinc-400 hover:bg-zinc-800 cursor-pointer">
-            Inventory
-          </div>
-          <div className="px-4 py-2 rounded-lg bg-zinc-800 font-medium text-white border-l-4 border-white/10">
-            Sell
-          </div>
-          <div className="px-4 py-2 rounded-lg text-zinc-400 hover:bg-zinc-800 cursor-pointer">
-            Salles
-          </div>
-        </nav>
-      </aside>
-
+      <Sidebar />
       <main className="flex-1 p-6 space-y-6 overflow-auto">
         {/* Header - Seguindo seu padrão */}
         <div className="flex items-center justify-between gap-4">

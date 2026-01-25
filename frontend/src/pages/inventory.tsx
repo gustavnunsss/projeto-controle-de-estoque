@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { CircleUser } from "lucide-react"; // Importação do ícone solicitado
+import { Sidebar } from "@/components/sidebar";
 
 const products = Array.from({ length: 15 }).map((_, i) => ({
   id: `00${i + 1}`,
@@ -37,22 +38,7 @@ export default function Inventory() {
 
   return (
     <div className="flex min-h-screen bg-zinc-950 text-white">
-      <aside className="w-64 bg-zinc-900 p-6 hidden md:block border-r border-zinc-800">
-        <h1 className="text-xl font-bold mb-8">LOGO</h1>
-        <nav className="space-y-2">
-          <p className="text-xs text-zinc-500 mb-4">MENU</p>
-          <div className="px-4 py-2 rounded-lg text-zinc-400 hover:bg-zinc-800 cursor-pointer">
-            Dashboard
-          </div>
-          <div className="px-4 py-2 rounded-lg bg-zinc-800 font-medium text-white">
-            Inventory
-          </div>
-          <div className="px-4 py-2 rounded-lg text-zinc-400 hover:bg-zinc-800 cursor-pointer">
-            Sales
-          </div>
-        </nav>
-      </aside>
-
+      <Sidebar />
       <main className="flex-1 p-6 space-y-6">
         <div className="flex items-center justify-between gap-4">
           <h2 className="text-2xl font-bold text-white">Inventory</h2>
