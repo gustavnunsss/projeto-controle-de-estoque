@@ -39,13 +39,13 @@ export default function Dashboard() {
     <div className="flex min-h-screen bg-black text-white">
       <Sidebar />
 
-      <main className="flex-1 px-8 py-6 space-y-6">
+      <main className="flex-1 p-8 py-6 space-y-6">
         {/* HEADER */}
         <header className="flex justify-between items-center">
           <h1 className="text-2xl font-bold text-white">Dashboard</h1>
           <Button
             variant="outline"
-            className="bg-zinc-800 hover:bg-zinc-700 text-white flex items-center gap-2 border-none"
+            className="bg-zinc-800 text-white flex items-center gap-2 border-none"
           >
             User
           </Button>

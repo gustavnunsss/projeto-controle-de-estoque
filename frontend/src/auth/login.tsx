@@ -1,7 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { api } from "../services/api"; // ajuste o caminho se necessário
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    async function validateToken() {
+      const token = localStorage.getItem("token");
+
+      if (!token) return;
+
+      try {
+        await api.get("/auth/me"); // rota protegida no backend
+        navigate("/dashboard");
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (error) {
+        localStorage.removeItem("token");
+      }
+    }
+
+    validateToken();
+  }, [navigate]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-zinc-900">
