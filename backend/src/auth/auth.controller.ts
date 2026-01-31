@@ -7,23 +7,29 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { SignInDTO } from './dtos/signin.dto';
-import { SignupDTO } from './dtos/signup.dto';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './guard/auth.guard';
+
+import express from 'express';
+import { Res } from '@nestjs/common';
 
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  @Post('signup')
-  async signup(@Body() body: SignupDTO) {
-    await this.authService.signup(body);
-    return body;
-  }
+  @Post('login')
+  async login(
+    @Body() body: SignInDTO,
+    @Res({ passthrough: true }) res: express.Response,
+  ) {
+    const token = await this.authService.signin(body);
 
-  @Post('signin')
-  async signin(@Body() body: SignInDTO) {
-    return this.authService.signin(body);
+    res.cookie('token', token, {
+      httpOnly: true,
+      sameSite: 'lax',
+    });
+
+    return { success: true };
   }
 
   @UseGuards(AuthGuard)
