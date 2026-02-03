@@ -12,6 +12,7 @@ import { AuthGuard } from './guard/auth.guard';
 
 import express from 'express';
 import { Res } from '@nestjs/common';
+import { SignupDTO } from './dtos/signup.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -30,6 +31,16 @@ export class AuthController {
     });
 
     return { success: true };
+  }
+
+  @Post('signup')
+  async signup(@Body() signupDto: SignupDTO) {
+    return this.authService.signup(signupDto);
+  }
+
+  @Post('register')
+  async register(@Body() signupDto: SignupDTO) {
+    return this.authService.signup(signupDto);
   }
 
   @UseGuards(AuthGuard)

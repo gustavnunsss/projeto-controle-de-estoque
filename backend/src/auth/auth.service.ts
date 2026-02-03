@@ -1,10 +1,10 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
-
-import { SignInDTO } from './dtos/signin.dto';
-import { SignupDTO } from './dtos/signup.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
+
+import { SignupDTO } from './dtos/signup.dto';
+import { SignInDTO } from './dtos/signin.dto';
 
 @Injectable()
 export class AuthService {
@@ -13,11 +13,10 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
+  // REGISTER
   async signup(data: SignupDTO) {
     const userAlreadyExists = await this.prismaService.user.findUnique({
-      where: {
-        email: data.email,
-      },
+      where: { email: data.email },
     });
 
     if (userAlreadyExists) {
@@ -28,43 +27,41 @@ export class AuthService {
 
     const user = await this.prismaService.user.create({
       data: {
-        ...data,
+        name: data.name,
+        email: data.email,
         password: hashedPassword,
       },
     });
 
     return {
       id: user.id,
-      email: user.email,
       name: user.name,
+      email: user.email,
     };
   }
 
+  // LOGIN
   async signin(data: SignInDTO) {
     const user = await this.prismaService.user.findUnique({
-      where: {
-        email: data.email,
-      },
+      where: { email: data.email },
     });
 
     if (!user) {
-      throw new UnauthorizedException('Invalid credentiais');
+      throw new UnauthorizedException('Invalid credentials');
     }
 
     const passwordMatch = await bcrypt.compare(data.password, user.password);
 
     if (!passwordMatch) {
-      throw new UnauthorizedException('Invalid credentiais');
+      throw new UnauthorizedException('Invalid credentials');
     }
 
     const accessToken = await this.jwtService.signAsync({
-      id: user.id,
+      sub: user.id,
       name: user.name,
       email: user.email,
     });
 
-    return {
-      accessToken,
-    };
+    return { accessToken };
   }
 }

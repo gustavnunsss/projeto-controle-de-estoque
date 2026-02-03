@@ -2,7 +2,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "@/services/api";
 
-export function PrivateRoutes() {
+export default function PrivateRoutes() {
   const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false);
 

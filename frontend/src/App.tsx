@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "./pages/dashboard";
 import AppLayout from "./layouts/app.layouts";
-import { PrivateRoutes } from "./routes/private.route";
+import PrivateRoutes from "./routes/private.routes";
 import Login from "./auth/login";
 
 export default function App() {
