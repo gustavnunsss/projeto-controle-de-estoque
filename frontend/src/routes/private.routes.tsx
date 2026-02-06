@@ -9,10 +9,11 @@ export default function PrivateRoutes() {
   useEffect(() => {
     async function validate() {
       try {
-        await api.get("/auth/me");
+        const res = await api.get("/auth/me");
+        console.log("AUTH OK:", res.data);
         setAuthorized(true);
-      } catch {
-        localStorage.removeItem("token");
+      } catch (err) {
+        console.log("AUTH ERROR:", err);
         setAuthorized(false);
       } finally {
         setLoading(false);
@@ -22,7 +23,7 @@ export default function PrivateRoutes() {
     validate();
   }, []);
 
-  if (loading) return <div>Carregando...</div>;
+  if (loading) return <div>Loading...</div>;
 
-  return authorized ? <Outlet /> : <Navigate to="/login" replace />;
+  return authorized ? <Outlet /> : <Navigate to="/signin" replace />;
 }

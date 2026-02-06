@@ -1,34 +1,26 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common'; // Importe InternalServerErrorException
+import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { ConfigService } from '@nestjs/config';
 
 interface JwtPayload {
-  sub: string;
-  username: string;
+  sub: number;
+  email: string;
 }
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(private configService: ConfigService) {
-    const secret = configService.get<string>('JWT_SECRET');
-    if (!secret) {
-      throw new InternalServerErrorException(
-        'JWT_SECRET não está configurado nas variáveis de ambiente.',
-      );
-    }
-
+  constructor(configService: ConfigService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      ignoreExpiration: false,
-      secretOrKey: secret,
+      secretOrKey: configService.getOrThrow<string>('JWT_SECRET'),
     });
   }
 
   validate(payload: JwtPayload) {
     return {
-      userId: payload.sub,
-      username: payload.username,
+      id: payload.sub,
+      email: payload.email,
     };
   }
 }

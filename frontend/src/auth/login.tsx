@@ -5,7 +5,7 @@ import { IoMdEyeOff } from "react-icons/io";
 import { api } from "@/services/api";
 
 interface LoginResponse {
-  token: string;
+  access_token: string;
 }
 
 export default function Login() {
@@ -21,15 +21,24 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const response = await api.post<LoginResponse>("/auth/login", {
+      const response = await api.post<LoginResponse>("/auth/signin", {
         email,
         password,
       });
 
-      localStorage.setItem("token", response.data.token);
-      navigate("/");
-    } catch {
-      alert("E-mail ou senha inválidos");
+      localStorage.setItem("token", response.data.access_token);
+      navigate("/dashboard");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      console.log("ERRO LOGIN:", error);
+
+      if (error?.response) {
+        console.log("STATUS:", error.response.status);
+        console.log("DATA:", error.response.data);
+        alert("E-mail ou senha inválidos");
+      } else {
+        alert("Erro inesperado");
+      }
     } finally {
       setLoading(false);
     }
@@ -45,7 +54,6 @@ export default function Login() {
     >
       <div className="absolute inset-0 bg-black/60" />
 
-      {/* lado esquerdo */}
       <div className="flex items-end relative z-10 text-white h-[650px] w-[500px]">
         <div className="flex-col">
           <h1 className="text-3xl font-bold mb-4">
@@ -59,7 +67,6 @@ export default function Login() {
         </div>
       </div>
 
-      {/* formulário */}
       <div className="relative z-10 w-[600px] h-[650px]">
         <div className="bg-white w-full rounded-2xl p-8 shadow-xl h-full border border-black">
           <h2 className="text-2xl font-semibold mb-1">Welcome</h2>
@@ -104,7 +111,7 @@ export default function Login() {
               disabled={loading}
               className="w-full bg-black text-white py-2 rounded-lg hover:bg-zinc-800 transition"
             >
-              {loading ? "Entrando..." : "Login"}
+              {loading ? "Loading..." : "Login"}
             </button>
           </form>
         </div>
