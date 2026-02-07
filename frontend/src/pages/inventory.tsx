@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { CircleUser } from "lucide-react"; // Importação do ícone solicitado
-import { Sidebar } from "@/components/sidebar";
 
 const products = Array.from({ length: 15 }).map((_, i) => ({
   id: `00${i + 1}`,
@@ -38,7 +37,6 @@ export default function Inventory() {
 
   return (
     <div className="flex min-h-screen bg-zinc-950 text-white">
-      <Sidebar />
       <main className="flex-1 p-6 space-y-6">
         <div className="flex items-center justify-between gap-4">
           <h2 className="text-2xl font-bold text-white">Inventory</h2>

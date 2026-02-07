@@ -7,7 +7,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { DollarSign, Package, Users, ShoppingCart } from "lucide-react";
+import {
+  DollarSign,
+  Package,
+  Users,
+  ShoppingCart,
+  CircleUser,
+} from "lucide-react";
 import {
   LineChart,
   Line,
@@ -35,96 +41,85 @@ const chartData = [
 
 export default function Dashboard() {
   return (
-    <div className="flex min-h-screen bg-black text-white">
-      <aside className="w-64 bg-zinc-900 p-6 flex flex-col">
-        <h1 className="text-xl font-bold mb-10">LOGO</h1>
+    <div className="p-6 bg-zinc-950">
+      <header className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold text-white">Dashboard</h1>
 
-        <span className="text-xs text-zinc-400 mb-4">MENU</span>
+        <Button
+          variant="default"
+          className="bg-zinc-800 hover:bg-zinc-700 text-white flex items-center gap-2 border-none"
+        >
+          <CircleUser className="w-5 h-5 text-zinc-400" />
+          User
+        </Button>
+      </header>
 
-        <nav className="flex flex-col gap-2">
-          <button className="text-left px-4 py-2 rounded-md bg-zinc-800">
-            Dashboard
-          </button>
-          <button className="text-left px-4 py-2 rounded-md hover:bg-zinc-800">
-            Inventory
-          </button>
-          <button className="text-left px-4 py-2 rounded-md hover:bg-zinc-800">
-            Financial
-          </button>
-        </nav>
-      </aside>
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <MetricCard title="Total Sales" value="$5,000" icon={<DollarSign />} />
+        <MetricCard title="Products" value="4" icon={<Package />} />
+        <MetricCard title="Customers" value="3" icon={<Users />} />
+        <MetricCard title="Orders" value="15" icon={<ShoppingCart />} />
+      </section>
 
-      <main className="flex-1 px-8 py-6 space-y-6">
-        <header className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Dashboard</h1>
-          <Button variant="outline">User</Button>
-        </header>
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <Card className="bg-zinc-900 border border-zinc-800 text-white">
+          <CardHeader>
+            <CardTitle>Recent Orders</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4 text-white">
+            <OrderItem name="Bruno Vargas" value="$1,250" />
+            <OrderItem name="Luan Braga" value="$1,100" />
+            <OrderItem name="Gustavo Nunes" value="$1,000" />
+          </CardContent>
+        </Card>
 
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <MetricCard
-            title="Total Sales"
-            value="$5,000"
-            icon={<DollarSign />}
-          />
-          <MetricCard title="Products" value="4" icon={<Package />} />
-          <MetricCard title="Customers" value="3" icon={<Users />} />
-          <MetricCard title="Orders" value="15" icon={<ShoppingCart />} />
-        </section>
+        <Card className="lg:col-span-2 bg-zinc-900 border border-zinc-800 text-white">
+          <CardHeader className="flex flex-row items-center justify-between">
+            <CardTitle>Sales Trends</CardTitle>
+            <Select defaultValue="jan">
+              <SelectTrigger className="w-[130px]">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="jan">January</SelectItem>
+                <SelectItem value="feb">February</SelectItem>
+                <SelectItem value="mar">March</SelectItem>
+                <SelectItem value="apr">April</SelectItem>
+                <SelectItem value="may">May</SelectItem>
+                <SelectItem value="jun">June</SelectItem>
+                <SelectItem value="jul">July</SelectItem>
+                <SelectItem value="aug">August</SelectItem>
+                <SelectItem value="sep">September</SelectItem>
+                <SelectItem value="oct">October</SelectItem>
+                <SelectItem value="nov">November</SelectItem>
+                <SelectItem value="dec">December</SelectItem>
+              </SelectContent>
+            </Select>
+          </CardHeader>
 
-        <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <Card className="bg-zinc-900 border border-zinc-800">
-            <CardHeader>
-              <CardTitle>Recent Orders</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <OrderItem name="Bruno Vargas" value="$1,250" />
-              <OrderItem name="Luan Braga" value="$1,100" />
-              <OrderItem name="Gustavo Nunes" value="$1,000" />
-            </CardContent>
-          </Card>
-
-          <Card className="lg:col-span-2 bg-zinc-900 border border-zinc-800">
-            <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle>Sales Trends</CardTitle>
-              <Select defaultValue="jan">
-                <SelectTrigger className="w-[130px]">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="jan">January</SelectItem>
-                  <SelectItem value="feb">February</SelectItem>
-                  <SelectItem value="mar">March</SelectItem>
-                  <SelectItem value="apr">April</SelectItem>
-                  <SelectItem value="may">May</SelectItem>
-                  <SelectItem value="jun">June</SelectItem>
-                  <SelectItem value="jul">July</SelectItem>
-                  <SelectItem value="aug">August</SelectItem>
-                  <SelectItem value="sep">September</SelectItem>
-                  <SelectItem value="oct">October</SelectItem>
-                  <SelectItem value="nov">November</SelectItem>
-                  <SelectItem value="dec">December</SelectItem>
-                </SelectContent>
-              </Select>
-            </CardHeader>
-
-            <CardContent className="h-[320px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={chartData}>
-                  <XAxis dataKey="month" stroke="#71717a" />
-                  <YAxis stroke="#71717a" />
-                  <Tooltip />
-                  <Line
-                    type="monotone"
-                    dataKey="value"
-                    stroke="#22c55e"
-                    strokeWidth={2}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-        </section>
-      </main>
+          <CardContent className="h-[320px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={chartData}>
+                <XAxis dataKey="month" stroke="#71717a" />
+                <YAxis stroke="#71717a" />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#18181b",
+                    borderColor: "#27272a",
+                    color: "#fafafa",
+                  }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="value"
+                  stroke="#22c55e"
+                  strokeWidth={2}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </section>
     </div>
   );
 }

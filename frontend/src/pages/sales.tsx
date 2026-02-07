@@ -12,13 +12,10 @@ import {
   TableCell,
 } from "@/components/ui/table";
 import { Search } from "lucide-react";
-import { Sidebar } from "@/components/sidebar";
 
 export default function SalesPage() {
   return (
     <div className="flex min-h-screen bg-zinc-950 text-white">
-      <Sidebar />
-
       <main className="flex-1 bg-zinc-950">
         <div className="max-w-7xl mx-auto px-8 py-6 space-y-6 text-white">
           {/* Header */}

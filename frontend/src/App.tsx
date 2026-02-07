@@ -3,6 +3,9 @@ import Dashboard from "./pages/dashboard";
 import AppLayout from "./layouts/app.layouts";
 import PrivateRoutes from "./routes/private.routes";
 import Login from "./auth/login";
+import Inventory from "./pages/inventory";
+import Sales from "./pages/sales";
+import Sell from "./pages/sell";
 
 export default function App() {
   return (
@@ -11,6 +14,9 @@ export default function App() {
       <Route element={<PrivateRoutes />}>
         <Route element={<AppLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/inventory" element={<Inventory />} />
+          <Route path="/sales" element={<Sales />} />
+          <Route path="/sell" element={<Sell />} />
         </Route>
       </Route>
 

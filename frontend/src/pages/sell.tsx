@@ -12,7 +12,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Sidebar } from "@/components/sidebar";
 
 export default function Sell() {
   const [quantity, setQuantity] = useState(2);
@@ -21,7 +20,6 @@ export default function Sell() {
 
   return (
     <div className="flex min-h-screen bg-zinc-950 text-white">
-      <Sidebar />
       <main className="flex-1 p-6 space-y-6 overflow-auto">
         {/* Header - Seguindo seu padrão */}
         <div className="flex items-center justify-between gap-4">
