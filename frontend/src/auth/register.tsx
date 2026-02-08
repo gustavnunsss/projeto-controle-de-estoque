@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { IoEye } from "react-icons/io5";
 import { IoMdEyeOff } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,8 +15,10 @@ export default function Register() {
       }}
     >
       <div className="absolute inset-0 bg-black/60" />
+
+      {/* Lado esquerdo */}
       <div className="flex items-end relative z-10 text-white h-[650px] w-[500px]">
-        <div className="flex-col">
+        <div>
           <h1 className="text-3xl font-bold mb-4">
             Without Logistics, <br /> there is no Order or Progress!
           </h1>
@@ -26,15 +29,19 @@ export default function Register() {
           </p>
         </div>
       </div>
-      <div className=" relative z-10 w-[600px] h-[650px]">
-        <div className="flex-col justify-center items-center bg-white w-full rounded-2xl p-8 shadow-xl h-full border border-black">
-          <h2 className="text-2xl font-semibold mb-1">Welcome</h2>
-          <p className="text-sm text-gray-500 mb-6 py-4">
-            Register as a contributor.
-          </p>
 
-          <form>
-            <div className="mb-5 mt-12">
+      {/* Card Register */}
+      <div className="relative z-10 w-[600px] h-[650px]">
+        <div className="bg-white w-full rounded-2xl p-6 shadow-xl h-full border border-black flex flex-col">
+          {/* Header */}
+          <div className="mb-3">
+            <h2 className="text-2xl font-semibold mb-1">Welcome</h2>
+            <p className="text-sm text-gray-500">Register as a contributor.</p>
+          </div>
+
+          {/* Form */}
+          <form className="space-y-3">
+            <div>
               <label className="text-xs">Name</label>
               <input
                 type="text"
@@ -42,7 +49,7 @@ export default function Register() {
               />
             </div>
 
-            <div className="mb-5">
+            <div>
               <label className="text-xs">E-mail</label>
               <input
                 type="email"
@@ -50,18 +57,16 @@ export default function Register() {
               />
             </div>
 
-            <div className="mb-12">
+            <div>
               <label className="text-xs">Password</label>
-              <div className="relative">
+              <div className="relative mt-1">
                 <input
                   type={showPassword ? "text" : "password"}
-                  className="w-full mt-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-black"
                 />
                 <button
                   type="button"
-                  onClick={() => {
-                    setShowPassword(!showPassword);
-                  }}
+                  onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"
                 >
                   {showPassword ? <IoEye /> : <IoMdEyeOff />}
@@ -71,24 +76,28 @@ export default function Register() {
 
             <button
               type="submit"
-              className="w-full bg-black text-white py-2 rounded-lg hover:bg-zinc-800 transition"
+              className="w-full bg-black text-white py-2 rounded-lg hover:bg-zinc-800 transition mt-1"
             >
               Register
             </button>
           </form>
 
-          <div className="my-6 flex items-center gap-2">
+          {/* Divider */}
+          <div className="my-3 flex items-center gap-2">
             <div className="flex-1 h-px bg-gray-300" />
             <span className="text-xs text-gray-400">Or continue with</span>
             <div className="flex-1 h-px bg-gray-300" />
           </div>
 
-          <p className="text-xs text-center text-gray-500 mt-6">
-            Already have an account?
-            <span className="text-black font-medium cursor-pointer">
-              Log in here
-            </span>
-            .
+          {/* Login link */}
+          <p className="text-sm text-center text-zinc-400">
+            Already have an account?{" "}
+            <Link
+              to="/login"
+              className="text-black hover:text-zinc-400 font-medium"
+            >
+              Log in here.
+            </Link>
           </p>
         </div>
       </div>

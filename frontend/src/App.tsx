@@ -6,6 +6,7 @@ import Login from "./auth/login";
 import Inventory from "./pages/inventory";
 import Sales from "./pages/sales";
 import Sell from "./pages/sell";
+import Register from "./auth/register";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
 
       {/* Rotas Públicas */}
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
       {/* Fallback */}
       <Route path="*" element={<Navigate to="/login" replace />} />
