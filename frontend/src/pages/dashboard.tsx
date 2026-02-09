@@ -100,8 +100,15 @@ export default function Dashboard() {
           <CardContent className="h-[320px]">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={chartData}>
-                <XAxis dataKey="month" stroke="#71717a" />
-                <YAxis stroke="#71717a" />
+                <XAxis
+                  dataKey="month"
+                  stroke="#ffffff"
+                  tick={{ fill: "#ffffff", fontSize: 12 }}
+                />
+                <YAxis
+                  stroke="#ffffff"
+                  tick={{ fill: "#ffffff", fontSize: 12 }}
+                />
                 <Tooltip
                   contentStyle={{
                     backgroundColor: "#18181b",
@@ -140,7 +147,7 @@ function MetricCard({
         <div className="text-zinc-400">{icon}</div>
       </CardHeader>
       <CardContent>
-        <p className="text-2xl font-bold">{value}</p>
+        <p className="text-2xl font-bold text-white">{value}</p>
         <span className="text-xs text-green-500">+0% from last month</span>
       </CardContent>
     </Card>

@@ -5,7 +5,6 @@ export const Sidebar = () => {
 
   return (
     <aside className="w-64 bg-zinc-900 p-6 flex flex-col">
-      <h1 className="text-xl font-bold text-white mb-10">LOGO</h1>
       <span className="text-xs text-zinc-400 mb-4">MENU</span>
       <nav className="flex flex-col gap-2">
         <button
@@ -32,6 +31,7 @@ export const Sidebar = () => {
         >
           Sell
         </button>
+        <img />
       </nav>
     </aside>
   );

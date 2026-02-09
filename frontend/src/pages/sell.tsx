@@ -23,7 +23,7 @@ export default function Sell() {
       <main className="flex-1 p-6 space-y-6 overflow-auto">
         {/* Header - Seguindo seu padrão */}
         <div className="flex items-center justify-between gap-4">
-          <h2 className="text-2xl font-bold">Nova Venda</h2>
+          <h2 className="text-2xl font-bold">New Sale</h2>
           <div className="flex items-center gap-4">
             <Input
               placeholder="Search"
@@ -44,15 +44,15 @@ export default function Sell() {
               <Card className="bg-zinc-900 border-zinc-800">
                 <CardHeader>
                   <CardTitle className="text-white text-sm">
-                    Dados do Cliente
+                    Customer Data
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-1.5">
                     <label className="text-xs text-zinc-500 uppercase">
-                      Cliente
+                      Client
                     </label>
-                    <Select defaultValue="bruno">
+                    <Select defaultValue="Bruno">
                       <SelectTrigger className="bg-zinc-950 border-zinc-800 text-white">
                         <SelectValue />
                       </SelectTrigger>
@@ -64,7 +64,7 @@ export default function Sell() {
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label className="text-xs text-zinc-500 uppercase">
-                        Vendedor
+                        Seller
                       </label>
                       <div className="flex items-center gap-2 bg-zinc-950 p-2 rounded-md border border-zinc-800 text-sm">
                         User 1
@@ -72,7 +72,7 @@ export default function Sell() {
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-xs text-zinc-500 uppercase">
-                        Data
+                        Date
                       </label>
                       <div className="flex items-center justify-between bg-zinc-950 p-2 rounded-md border border-zinc-800 text-sm text-zinc-400">
                         18/01/2026 <Calendar className="w-4 h-4" />
@@ -86,7 +86,7 @@ export default function Sell() {
               <Card className="bg-zinc-900 border-zinc-800">
                 <CardHeader>
                   <CardTitle className="text-white text-sm">
-                    Adicionar Produto
+                    Add Product
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -94,13 +94,13 @@ export default function Sell() {
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
                     <Input
                       className="bg-zinc-950 border-zinc-800 pl-10 text-white"
-                      placeholder="Buscar produto..."
+                      placeholder="Search Product"
                     />
                   </div>
                   <div className="flex items-center justify-between p-3 bg-zinc-950 rounded-lg border border-zinc-800">
                     <div>
                       <p className="text-sm font-bold text-white">
-                        Iphone 16 PRO MAX
+                        IPHONE 16 PRO MAX
                       </p>
                       <p className="text-xs text-zinc-500">R$ 4.000,00</p>
                     </div>
@@ -116,24 +116,24 @@ export default function Sell() {
             <Card className="bg-zinc-900 border-zinc-800">
               <CardHeader>
                 <CardTitle className="text-white text-sm">
-                  Produtos Selecionados
+                  Selected Products
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <table className="w-full text-sm">
                   <thead className="text-zinc-500 border-b border-zinc-800 font-medium">
                     <tr>
-                      <th className="p-4 text-left font-bold">PRODUTO</th>
-                      <th className="p-4 text-left font-bold">PREÇO</th>
-                      <th className="p-4 text-center font-bold">QTD</th>
+                      <th className="p-4 text-left font-bold">PRODUTC</th>
+                      <th className="p-4 text-left font-bold">PRICE</th>
+                      <th className="p-4 text-center font-bold">AMOUNT</th>
                       <th className="p-4 text-left font-bold">SUBTOTAL</th>
-                      <th className="p-4 text-right font-bold">AÇÃO</th>
+                      <th className="p-4 text-right font-bold">ACTION</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-zinc-800">
                     <tr className="hover:bg-zinc-800/40">
                       <td className="p-4 font-semibold text-white">
-                        Iphone 16 PRO MAX
+                        IPHONE 16 PRO MAX
                       </td>
                       <td className="p-4 text-zinc-300">R$ 4.000,00</td>
                       <td className="p-4">
@@ -183,7 +183,7 @@ export default function Sell() {
             <Card className="bg-zinc-900 border-zinc-800 sticky top-6 shadow-2xl">
               <CardHeader className="border-b border-zinc-800 mb-4">
                 <CardTitle className="text-white text-lg">
-                  Resumo Financeiro
+                  Financial Symmary
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -198,7 +198,7 @@ export default function Sell() {
                     </span>
                   </div>
                   <div className="flex justify-between text-zinc-500">
-                    <span>Descontos</span>
+                    <span>Discounts</span>
                     <span className="text-emerald-500">- R$ 0,00</span>
                   </div>
                   <div className="pt-4 border-t border-zinc-800 flex justify-between items-center">
@@ -216,19 +216,19 @@ export default function Sell() {
 
                 <div className="space-y-4">
                   <h4 className="text-xs font-bold text-zinc-500 uppercase tracking-widest">
-                    Pagamento
+                    Payment
                   </h4>
                   <div className="grid grid-cols-2 gap-3">
                     <div className="p-3 bg-zinc-950 rounded-lg border border-emerald-500/50 flex flex-col items-center gap-1">
                       <div className="w-2 h-2 bg-emerald-500 rounded-full" />
                       <span className="text-[10px] uppercase font-bold text-white">
-                        Pago
+                        Paid
                       </span>
                     </div>
                     <div className="p-3 bg-zinc-950 rounded-lg border border-zinc-800 flex flex-col items-center gap-1 opacity-50">
                       <div className="w-2 h-2 bg-zinc-600 rounded-full" />
                       <span className="text-[10px] uppercase font-bold text-zinc-500">
-                        Pendente
+                        Pending
                       </span>
                     </div>
                   </div>
@@ -236,13 +236,13 @@ export default function Sell() {
 
                 <div className="space-y-3">
                   <Button className="w-full bg-white text-black hover:bg-zinc-200 font-bold h-12 text-sm">
-                    FINALIZAR VENDA
+                    FINALIZE SALE
                   </Button>
                   <Button
                     variant="outline"
                     className="w-full border-zinc-800 hover:bg-red-500/10 hover:text-red-500 text-zinc-500 h-10"
                   >
-                    CANCELAR
+                    CANCEL
                   </Button>
                 </div>
               </CardContent>

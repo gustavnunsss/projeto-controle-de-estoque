@@ -32,15 +32,15 @@ export default function Register() {
 
       {/* Card Register */}
       <div className="relative z-10 w-[600px] h-[650px]">
-        <div className="bg-white w-full rounded-2xl p-6 shadow-xl h-full border border-black flex flex-col">
+        <div className="bg-white w-full rounded-2xl p-10 shadow-xl h-full border border-black flex flex-col">
           {/* Header */}
-          <div className="mb-3">
+          <div className="mb-5">
             <h2 className="text-2xl font-semibold mb-1">Welcome</h2>
             <p className="text-sm text-gray-500">Register as a contributor.</p>
           </div>
 
           {/* Form */}
-          <form className="space-y-3">
+          <form className="space-y-4">
             <div>
               <label className="text-xs">Name</label>
               <input
@@ -76,14 +76,14 @@ export default function Register() {
 
             <button
               type="submit"
-              className="w-full bg-black text-white py-2 rounded-lg hover:bg-zinc-800 transition mt-1"
+              className="w-full bg-black text-white py-2.5 rounded-lg hover:bg-zinc-800 transition mt-2"
             >
               Register
             </button>
           </form>
 
           {/* Divider */}
-          <div className="my-3 flex items-center gap-2">
+          <div className="my-6 flex items-center gap-2">
             <div className="flex-1 h-px bg-gray-300" />
             <span className="text-xs text-gray-400">Or continue with</span>
             <div className="flex-1 h-px bg-gray-300" />
@@ -91,7 +91,7 @@ export default function Register() {
 
           {/* Login link */}
           <p className="text-sm text-center text-zinc-400">
-            Already have an account?{" "}
+            Already have an account?
             <Link
               to="/login"
               className="text-black hover:text-zinc-400 font-medium"
