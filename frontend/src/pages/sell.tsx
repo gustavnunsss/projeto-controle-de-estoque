@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Trash2, CircleUser, Calendar, Plus } from "lucide-react";
+import { Trash2, Calendar, Plus, Search } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -24,16 +24,7 @@ export default function Sell() {
         {/* Header - Seguindo seu padrão */}
         <div className="flex items-center justify-between gap-4">
           <h2 className="text-2xl font-bold">New Sale</h2>
-          <div className="flex items-center gap-4">
-            <Input
-              placeholder="Search"
-              className="max-w-md bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500"
-            />
-            <Button className="bg-zinc-800 hover:bg-zinc-700 text-white flex items-center gap-2 border-zinc-800 border">
-              <CircleUser className="w-5 h-5 text-zinc-400" />
-              User
-            </Button>
-          </div>
+          <div className="flex items-center gap-4"></div>
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
@@ -191,7 +182,7 @@ export default function Sell() {
                   <div className="flex justify-between text-zinc-500">
                     <span>Subtotal</span>
                     <span className="text-white">
-                      R${" "}
+                      R$
                       {total.toLocaleString("pt-BR", {
                         minimumFractionDigits: 2,
                       })}
@@ -206,7 +197,7 @@ export default function Sell() {
                       Total
                     </span>
                     <span className="text-white text-2xl font-black">
-                      R${" "}
+                      R$
                       {total.toLocaleString("pt-BR", {
                         minimumFractionDigits: 2,
                       })}

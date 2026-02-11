@@ -1,8 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/bagde";
+import { Badge } from "@/components/ui/badge";
 import {
   Table,
   TableHeader,
@@ -11,7 +10,6 @@ import {
   TableHead,
   TableCell,
 } from "@/components/ui/table";
-import { Search } from "lucide-react";
 
 export default function SalesPage() {
   return (
@@ -22,13 +20,7 @@ export default function SalesPage() {
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-bold text-white">Sales</h2>
 
-            <div className="relative w-80">
-              <Search className="absolute left-3 top-3 h-4 w-4 text-zinc-400" />
-              <Input
-                placeholder="Search"
-                className="pl-10 bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-400"
-              />
-            </div>
+            <div className="relative w-80"></div>
           </div>
 
           {/* Cards */}

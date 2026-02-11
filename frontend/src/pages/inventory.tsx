@@ -2,10 +2,7 @@
 
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Button } from "@/components/ui/button";
-import { CircleUser } from "lucide-react"; // Importação do ícone solicitado
 
 const products = Array.from({ length: 15 }).map((_, i) => ({
   id: `00${i + 1}`,
@@ -40,18 +37,6 @@ export default function Inventory() {
       <main className="flex-1 p-6 space-y-6">
         <div className="flex items-center justify-between gap-4">
           <h2 className="text-2xl font-bold text-white">Inventory</h2>
-          <Input
-            placeholder="Search"
-            className="max-w-md bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500"
-          />
-          {/* Botão com Fundo Gray, Letra Branca e Ícone */}
-          <Button
-            variant="default"
-            className="bg-zinc-800 hover:bg-zinc-700 text-white flex items-center gap-2 border-none"
-          >
-            <CircleUser className="w-5 h-5 text-zinc-400" />
-            User
-          </Button>
         </div>
 
         <Card className="bg-zinc-900 border-zinc-800">

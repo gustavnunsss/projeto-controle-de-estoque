@@ -13,9 +13,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Skeleton } from "@/components/ui/skeleton";
-import {
-  TooltipProvider,
-} from "@/components/ui/tooltip";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -62,7 +60,7 @@ const SidebarProvider = React.forwardRef<
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     const isMobile = useIsMobile();
     const [openMobile, setOpenMobile] = React.useState(false);
@@ -79,7 +77,7 @@ const SidebarProvider = React.forwardRef<
         }
         document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
       },
-      [open, setOpenProp]
+      [open, setOpenProp],
     );
 
     const toggleSidebar = React.useCallback(() => {
@@ -130,7 +128,7 @@ const SidebarProvider = React.forwardRef<
             }
             className={cn(
               "group/sidebar-wrapper flex min-h-svh w-full",
-              className
+              className,
             )}
             {...props}
           >
@@ -139,7 +137,7 @@ const SidebarProvider = React.forwardRef<
         </TooltipProvider>
       </SidebarContext.Provider>
     );
-  }
+  },
 );
 SidebarProvider.displayName = "SidebarProvider";
 
@@ -160,7 +158,7 @@ const Sidebar = React.forwardRef<
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
 
@@ -170,7 +168,7 @@ const Sidebar = React.forwardRef<
           ref={ref}
           className={cn(
             "flex h-full w-[--sidebar-width] flex-col bg-sidebar",
-            className
+            className,
           )}
           {...props}
         >
@@ -212,7 +210,7 @@ const Sidebar = React.forwardRef<
         {children}
       </div>
     );
-  }
+  },
 );
 Sidebar.displayName = "Sidebar";
 
@@ -234,7 +232,7 @@ const sidebarMenuButtonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
 const SidebarMenuButton = React.forwardRef<
@@ -252,7 +250,7 @@ const SidebarMenuButton = React.forwardRef<
       className={cn(
         sidebarMenuButtonVariants({ variant, size }),
         isActive && "bg-sidebar-accent font-medium",
-        className
+        className,
       )}
       {...props}
     />

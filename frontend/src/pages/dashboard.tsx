@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -7,13 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  DollarSign,
-  Package,
-  Users,
-  ShoppingCart,
-  CircleUser,
-} from "lucide-react";
+import { DollarSign, Package, Users, ShoppingCart } from "lucide-react";
 import {
   LineChart,
   Line,
@@ -44,14 +37,6 @@ export default function Dashboard() {
     <div className="p-6 bg-zinc-950">
       <header className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-white">Dashboard</h1>
-
-        <Button
-          variant="default"
-          className="bg-zinc-800 hover:bg-zinc-700 text-white flex items-center gap-2 border-none"
-        >
-          <CircleUser className="w-5 h-5 text-zinc-400" />
-          User
-        </Button>
       </header>
 
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
