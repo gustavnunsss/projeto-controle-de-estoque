@@ -6,13 +6,13 @@ export const Sidebar = () => {
   const navigate = useNavigate();
 
   return (
-    <aside className="w-64 bg-zinc-900 p-6 flex flex-col">
+    <aside className="w-64 h-screen sticky top-0 bg-zinc-900 p-6 flex flex-col">
       {/* MENU */}
       <span className="text-xs text-zinc-400 mb-4">MENU</span>
 
       <nav className="flex flex-col gap-2">
         <button
-          className="text-left px-4 py-2 rounded-md  hover:bg-zinc-800 text-white"
+          className="text-left px-4 py-2 rounded-md hover:bg-zinc-800 text-zinc-200"
           onClick={() => navigate("/dashboard")}
         >
           Dashboard

@@ -14,9 +14,18 @@ import {
 } from "@/components/ui/select";
 
 export default function Sell() {
-  const [quantity, setQuantity] = useState(2);
+  const [quantity, setQuantity] = useState(1);
   const price = 4000.0;
+
   const total = price * quantity;
+
+  const increase = () => {
+    setQuantity((prev) => prev + 1);
+  };
+
+  const decrease = () => {
+    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+  };
 
   return (
     <div className="flex min-h-screen bg-zinc-950 text-white">
@@ -57,7 +66,7 @@ export default function Sell() {
                       <label className="text-xs text-zinc-500 uppercase">
                         Seller
                       </label>
-                      <div className="flex items-center gap-2 bg-zinc-950 p-2 rounded-md border border-zinc-800 text-sm">
+                      <div className="flex items-center gap-2 bg-zinc-950 p-2 rounded-md border border-zinc-800 text-sm text-white">
                         User 1
                       </div>
                     </div>
@@ -130,18 +139,18 @@ export default function Sell() {
                       <td className="p-4">
                         <div className="flex items-center justify-center gap-3">
                           <button
-                            onClick={() => setQuantity((q) => q + 1)}
+                            onClick={increase}
                             className="text-zinc-400 hover:text-white text-lg font-bold"
                           >
                             +
                           </button>
-                          <span className="w-10 text-center bg-zinc-950 py-1 rounded border border-zinc-800">
+
+                          <span className="w-10 text-center bg-zinc-950 py-1 rounded border border-zinc-800 text-white">
                             {quantity}
                           </span>
+
                           <button
-                            onClick={() =>
-                              setQuantity((q) => Math.max(1, q - 1))
-                            }
+                            onClick={decrease}
                             className="text-zinc-400 hover:text-white text-lg font-bold"
                           >
                             -

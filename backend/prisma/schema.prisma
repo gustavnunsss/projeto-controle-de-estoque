@@ -24,6 +24,11 @@ model Product {
   saleItems SaleItem[]
 }
 
+model Clients {
+  id   String @id @default(uuid())
+  name String
+}
+
 model Sale {
   id        String   @id @default(uuid())
   customer  String
