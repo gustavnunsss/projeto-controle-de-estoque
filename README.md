@@ -39,10 +39,11 @@ A modelagem e o acesso aos dados são realizados através do Prisma ORM, com con
 
 ## Estrutura do Projeto
 
-```
-backend/   API REST estruturada com NestJS seguindo padrão de arquitetura em camadas 
-frontend/  Interface desenvolvida em React com comunicação integrada à API
-```
+
+***backend/   API REST estruturada com NestJS seguindo padrão de arquitetura em camadas*** 
+
+***frontend/  Interface desenvolvida em React com comunicação integrada à API***
+
 
 ---
 
